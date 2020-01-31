@@ -34,9 +34,9 @@ third:
 	docker build -t cs4500:0.1 . 
 	- rm -rf ./part1/test-map
 	git clone $(MAPSPECREPO) ./part1/test-map
-	cd ./part1/test-map; git checkout $(MAPSPECHASH)
-	cd ./part1; cp array.h queue.h map.h string.h object.h Makefile ./test-map
-#	TODO: cp anything else to compile and run e.g. googletests? my-tests.cpp edited-tests.cpp 
+	cd ./part1/test-map; git checkout $(MAPSPECHASH);cp ./part2/* ./
+	@echo "\n\n\n alert: this team puts their files inside of a dir, problems may occur\n\n\n\n"
+	cd ./part1; cp array.h queue.h map.h string.h object.h Makefile ./test-map 
 	- docker run -ti -v `pwd`:/test cs4500:0.1 bash -c "cd /test/part1/test-map ; make testMap"
 
 dircheck: ./part1 ./part1/array.h ./part1/queue.h ./part1/map.h ./part1/string.h ./part1/object.h ./part1/Makefile ./part1/MEMO.md ./part2 ./part2/REPO.md
