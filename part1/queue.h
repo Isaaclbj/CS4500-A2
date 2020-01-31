@@ -30,6 +30,7 @@ public:
 		elements = new Object*[DEFAULT_SIZE]();
 		capacity = DEFAULT_SIZE;
 		size = 0;
+		popped = 0;
 	}
 
 	/*
@@ -40,6 +41,7 @@ public:
 		elements = new Object*[diffCapacity]();
 		capacity = diffCapacity;
 		size = 0;
+		popped = 0;
 	}
 	
 	/*
