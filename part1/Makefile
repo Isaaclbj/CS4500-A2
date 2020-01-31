@@ -16,7 +16,7 @@ testQueue:
 testMap:
 	g++ test-map.cpp -o test-map
 	./test-map
-	@ehco "tests for map: All passed"
+	@echo "tests for map: All passed"
 
 clean:
 	rm test-array test-map test-queue

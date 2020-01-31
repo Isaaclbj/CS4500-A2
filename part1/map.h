@@ -38,6 +38,10 @@ class Map : public Object {
     // Always false if key == nullptr
     bool has_key(Object* key) 
     {
+        if(!key)
+        {
+            return false;
+        }
         for(int ii = 0; ii < used; ii ++)
         {
             if(keys[ii] && key->equals(keys[ii]))
@@ -52,6 +56,11 @@ class Map : public Object {
     // Expects user to cast response to get subtypes
     Object* get(Object* key) 
     {
+        if(!key)
+        {
+            return NULL;
+        }
+
         for(int ii = 0; ii < used; ii ++)
         {
             if(keys[ii] && key->equals(keys[ii]))
@@ -67,6 +76,19 @@ class Map : public Object {
     // Does nothing if key or value == nullptr
     void put(Object* key, Object* value) 
     {
+        if(!value || !key)
+        {
+            return;
+        }
+        for(int ii = 0; ii < cap; ii++)
+        {
+            if(keys[ii] && keys[ii]->equals(key))
+            {
+                vals[ii] = value;
+                return;
+            }
+        }
+
         used ++;
         if(used > cap)
         {
@@ -99,6 +121,10 @@ class Map : public Object {
     // Returns nullptr if no value exists for given key.
     Object* remove(Object* key) 
     {
+        if(!key)
+        {
+            return NULL;
+        }
         for(int ii = 0; ii < cap; ii ++)
         {
             if(keys[ii] && keys[ii]->equals(key))
@@ -106,6 +132,7 @@ class Map : public Object {
                 Object *ret = vals[ii];
                 vals[ii] = NULL;
                 keys[ii] = NULL;
+                used --;
                 return ret;
             }
         }

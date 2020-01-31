@@ -31,7 +31,11 @@ public:
     /* Returns whether two objects are equal, to be overriden by subclasses */
     virtual bool equals(Object* const obj)
     {
-        return (hash() == obj->hash());
+        if(!obj)
+        {
+            return !this;
+        }
+        return (this->hash() == obj->hash());
     };
 
     /* Returns an object's hash value. Identical objects should have identical hashes */

@@ -57,6 +57,10 @@ public:
     /* Inherited from Object, checks equality between an String and an Object */
     bool equals(Object* const obj)
     {
+        if(!obj)
+        {
+            return false;
+        }
         return (this->hash() == obj->hash());
     }
 
